@@ -18,10 +18,10 @@ outputs:
   cache-hit:
     description: 'A boolean value to indicate an exact match was found for the primary key'
 runs:
-  using: 'node16'
+  using: 'node12'
   main: 'dist/restore/index.js'
   post: 'dist/save/index.js'
-  post-if: 'success()'
+  post-if: success() && env.CACHE_SKIP_SAVE != 'true'
 branding:
   icon: 'archive'
   color: 'gray-dark'
